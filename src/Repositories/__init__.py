@@ -1,2 +1,4 @@
 from .ProductRepository import ProductRepository
 from .LocalProductRepository import LocalProductRepository
+from .TabsRepository import TabsRepository
+from .LocalTabsRepository import LocalTabsRepository

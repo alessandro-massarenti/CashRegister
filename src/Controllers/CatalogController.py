@@ -12,8 +12,6 @@ class CatalogController(Observer):
         self.__product_service = product_service
         self.__catalog_view: CatalogView
 
-
-
     def __del__(self):
         self.__product_service.unregister(self)
 
@@ -31,7 +29,7 @@ class CatalogController(Observer):
 
         print(f'Buttons: {buttons}')
         print(f'Products: {products}')
-        #update only the products that are not in the view
+        # update only the products that are not in the view
         for product in products:
             if product.name not in self.__catalog_view.get_product_names():
                 self.__catalog_view.add_product_button(product.name, lambda p=product: self.add_item(p))
@@ -40,5 +38,5 @@ class CatalogController(Observer):
         # Add an item to the catalog
         print(f'Adding {product.name} to the bill')
         if product.name == "Product 3":
-            #add a new product
+            # add a new product
             self.__product_service.add(Product("Product 4", 40.00))
