@@ -1,0 +1,2 @@
+from .ProductRepository import ProductRepository
+from .LocalProductRepository import LocalProductRepository
