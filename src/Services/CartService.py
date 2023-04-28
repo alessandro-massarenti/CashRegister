@@ -9,7 +9,7 @@ class CartService(ObservableSubject):
         self._items: list[CartLine] = []
 
     def add(self, product: Product):
-    # check if the product is already in the cart
+        # check if the product is already in the cart
         for item in self._items:
             if item.name == product.name:
                 item.add_quantity()

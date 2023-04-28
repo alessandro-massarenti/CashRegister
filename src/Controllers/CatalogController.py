@@ -2,14 +2,15 @@ import logging
 
 from Models import Product
 from Views import CatalogView
-from Services import ProductService
+from Services import ProductService, CartService
 from interfaces import Observer, ObservableSubject
 
 
 class CatalogController(Observer):
 
-    def __init__(self, product_service: ProductService):
+    def __init__(self, product_service: ProductService, cart_service:CartService):
         self.__product_service = product_service
+        self.__cart_service = cart_service
         self.__catalog_view: CatalogView
 
     def __del__(self):
@@ -27,8 +28,6 @@ class CatalogController(Observer):
         products = self.__product_service.get_all()
         buttons = self.__catalog_view.get_product_names()
 
-        print(f'Buttons: {buttons}')
-        print(f'Products: {products}')
         # update only the products that are not in the view
         for product in products:
             if product.name not in self.__catalog_view.get_product_names():
@@ -36,7 +35,4 @@ class CatalogController(Observer):
 
     def add_item(self, product):
         # Add an item to the catalog
-        print(f'Adding {product.name} to the bill')
-        if product.name == "Product 3":
-            # add a new product
-            self.__product_service.add(Product("Product 4", 40.00))
+        self.__cart_service.add(product)
