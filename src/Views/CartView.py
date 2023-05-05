@@ -1,14 +1,12 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 
-from Controllers import CartController
 from Views.View import View
 
 
 class CartView(View):
-    def __init__(self, parent, cart_controller: CartController):
+    def __init__(self, parent, cart_controller):
         super().__init__(parent, cart_controller)
-        self.__cart_controller = cart_controller
 
         # Create a label
         self.__view_title = tk.Label(self._frame, text="Cart")

@@ -1,5 +1,4 @@
-from Controllers.Controller import Controller
-from Models import Product
+from .Controller import Controller
 from interfaces import ObservableSubject
 from Views import CartView
 
