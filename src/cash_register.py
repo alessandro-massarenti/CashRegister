@@ -1,3 +1,5 @@
+from Controllers.CheckoutController import CheckoutController
+from Views.CheckoutView import CheckoutView
 from Views.MainWindow import MainWindow
 
 
@@ -23,7 +25,12 @@ def run_app():
 
     cart_controller.set_view(cart_view)
 
-    MainWindow(catalog_view, cart_view).assemble()
+    checkout_controller = CheckoutController(cart_service)
+    checkout_view = CheckoutView(root, checkout_controller)
+
+    checkout_controller.set_view(checkout_view)
+
+    MainWindow(catalog_view, cart_view,checkout_view).assemble()
 
     root.mainloop()
 
