@@ -7,5 +7,7 @@ class Observer(ABC):
     def update(self, observable: ObservableSubject) -> None:
         """
         Update the observer, when the observable changes.
+        :param observable: The observable that changed.
+        :return: None
         """
         pass

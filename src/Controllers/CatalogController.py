@@ -1,14 +1,16 @@
 import logging
 
+from Controllers.Controller import Controller
 from Models import Product
 from Views import CatalogView
 from Services import ProductService, CartService
 from interfaces import Observer, ObservableSubject
 
 
-class CatalogController(Observer):
+class CatalogController(Controller):
 
-    def __init__(self, product_service: ProductService, cart_service:CartService):
+    def __init__(self, product_service: ProductService, cart_service: CartService):
+        super().__init__()
         self.__product_service = product_service
         self.__cart_service = cart_service
         self.__catalog_view: CatalogView

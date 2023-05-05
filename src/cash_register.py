@@ -1,3 +1,5 @@
+from Views.MainWindow import MainWindow
+
 
 def run_app():
     # open the catalog view
@@ -13,11 +15,15 @@ def run_app():
 
     catalog_controller = CatalogController(product_service, cart_service)
     catalog_view = CatalogView(root, catalog_controller)
+
     catalog_controller.set_view(catalog_view)
 
     cart_controller = CartController(cart_service)
     cart_view = CartView(root, cart_controller)
+
     cart_controller.set_view(cart_view)
+
+    MainWindow(catalog_view, cart_view).assemble()
 
     root.mainloop()
 

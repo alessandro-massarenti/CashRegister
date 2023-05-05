@@ -1,11 +1,13 @@
+from Controllers.Controller import Controller
 from Models import Product
-from interfaces import ObservableSubject, Observer
+from interfaces import ObservableSubject
 from Views import CartView
 
 
-class CartController(Observer):
+class CartController(Controller):
 
     def __init__(self, cart_service):
+        super().__init__()
         self.__cart_service = cart_service
         self.__cart_view: CartView
 
@@ -17,10 +19,10 @@ class CartController(Observer):
         self.__cart_service.register(self)
 
         # TODO: remove this
-        self.__cart_service.add(Product("Product 1", 10.00))
-        self.__cart_service.add(Product("Product 1", 10.00))
-        self.__cart_service.add(Product("Product 2", 20.00))
-        self.__cart_service.add(Product("Product 3", 30.00))
+        # self.__cart_service.add(Product("Product 1", 10.00))
+        # self.__cart_service.add(Product("Product 1", 10.00))
+        # self.__cart_service.add(Product("Product 2", 20.00))
+        # self.__cart_service.add(Product("Product 3", 30.00))
 
     def update(self, observable: ObservableSubject) -> None:
         self.update_view()
