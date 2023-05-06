@@ -19,5 +19,10 @@ class CheckoutView(View):
         self.__store_transaction_button = tk.Button(self._frame, text="Store Payment", command=self.__checkout_controller.store_transaction)
         self.__store_transaction_button.pack()
 
+    def disable(self):
+        self.__add_payment_button.config(state=tk.DISABLED)
+        self.__store_transaction_button.config(state=tk.DISABLED)
 
-
+    def enable(self):
+        self.__add_payment_button.config(state=tk.NORMAL)
+        self.__store_transaction_button.config(state=tk.NORMAL)

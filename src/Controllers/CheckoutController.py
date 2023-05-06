@@ -13,11 +13,18 @@ class CheckoutController(Controller):
     def set_view(self, checkout_view: CheckoutView):
         self.__checkout_view = checkout_view
         self.__cart_service.register(self)
+        self.update(self.__cart_service)
 
     def update(self, observable: ObservableSubject) -> None:
-        pass
+        if self.__cart_service.is_empty:
+            self.__checkout_view.disable()
+        else:
+            self.__checkout_view.enable()
 
     def pay(self):
+
+        self.__cart_service.clear()
+
         print("paying")
 
     def store_transaction(self):

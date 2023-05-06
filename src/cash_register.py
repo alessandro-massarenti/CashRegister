@@ -1,12 +1,11 @@
 from Controllers.CheckoutController import CheckoutController
+from Controllers.MainWindowController import MainWindowController
 from Views.CheckoutView import CheckoutView
 from Views.MainWindow import MainWindow
 
 
 def run_app():
     # open the catalog view
-    from Views import CatalogView, CartView
-    from Controllers import CatalogController, CartController
     from Services import ProductService, CartService
     from Repositories import LocalProductRepository
     from tkinter import Tk
@@ -15,23 +14,14 @@ def run_app():
     cart_service = CartService()
     product_service = ProductService(LocalProductRepository())
 
-    catalog_controller = CatalogController(product_service, cart_service)
-    catalog_view = CatalogView(root, catalog_controller)
+    main_window_controller = MainWindowController()
+    main_window = MainWindow(root, main_window_controller)
 
-    catalog_controller.set_view(catalog_view)
+    main_window_controller.set_view(main_window)
 
-    cart_controller = CartController(cart_service)
-    cart_view = CartView(root, cart_controller)
+    main_window.assemble()
 
-    cart_controller.set_view(cart_view)
-
-    checkout_controller = CheckoutController(cart_service)
-    checkout_view = CheckoutView(root, checkout_controller)
-
-    checkout_controller.set_view(checkout_view)
-
-    MainWindow(catalog_view, cart_view,checkout_view).assemble()
-
+    main_window.show()
     root.mainloop()
 
 

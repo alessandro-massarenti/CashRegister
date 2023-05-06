@@ -32,4 +32,12 @@ class CartService(ObservableSubject):
                 self._notify_observers()
                 return
 
+    def clear(self):
+        self._items.clear()
+        self._notify_observers()
+
+    @property
+    def is_empty(self) -> bool:
+        return len(self._items) == 0
+
 
