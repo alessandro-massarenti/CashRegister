@@ -11,8 +11,6 @@ def run_app():
     from tkinter import Tk
 
     root = Tk()
-    cart_service = CartService()
-    product_service = ProductService(LocalProductRepository())
 
     main_window_controller = MainWindowController()
     main_window = MainWindow(root, main_window_controller)
