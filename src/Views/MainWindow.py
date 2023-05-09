@@ -16,16 +16,13 @@ class MainWindow(View):
 
         context = Context()
 
-
         catalog_controller = CatalogController(context.product_service, context.cart_service)
         cart_controller = CartController(context.cart_service)
         checkout_controller = CheckoutController(context.cart_service)
 
-
         catalog_view = CatalogView(self.frame(), catalog_controller)
         cart_view = CartView(self.frame(), cart_controller)
         checkout_view = CheckoutView(self.frame(), checkout_controller)
-
 
         catalog_controller.set_view(catalog_view)
         cart_controller.set_view(cart_view)

@@ -1,3 +1,4 @@
+from Context import Context
 from Controllers.Controller import Controller
 from Views.CheckoutView import CheckoutView
 from interfaces import ObservableSubject
@@ -23,6 +24,8 @@ class CheckoutController(Controller):
 
     def pay(self):
 
+        printer_service = Context().printer_service
+        printer_service.print("Mammamiaa")
         self.__cart_service.clear()
 
         print("paying")
